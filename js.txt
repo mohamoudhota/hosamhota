@@ -1,0 +1,35 @@
+document.addEventListener('DOMContentLoaded', () => {  
+    const analyses = [  
+        'تحليل الدم الكامل',  
+        'تحليل سكر الدم',  
+        'تحليل الكوليسترول',  
+        'تحليل وظائف الكبد',  
+        'تحليل وظائف الكلى',  
+        'تحليل الهرمونات',  
+        'تحليل الفيتامينات',  
+        'تحليل الفيروسات'  
+    ];  
+
+    const searchInput = document.getElementById('search');  
+    const analysisList = document.getElementById('analysis-list');  
+
+    function displayAnalyses(filter = '') {  
+        analysisList.innerHTML = '';  
+        const filteredAnalyses = analyses.filter(analysis =>   
+            analysis.includes(filter)  
+        );  
+
+        filteredAnalyses.forEach(analysis => {  
+            const li = document.createElement('li');  
+            li.textContent = analysis;  
+            analysisList.appendChild(li);  
+        });  
+    }  
+
+    searchInput.addEventListener('input', () => {  
+        displayAnalyses(searchInput.value);  
+    });  
+
+    // عرض جميع التحاليل عند بدء التطبيق  
+    displayAnalyses();  
+});
